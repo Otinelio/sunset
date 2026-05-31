@@ -10,7 +10,7 @@ import { fmtFCFA } from "../lib/constants";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({ meta: [{ title: "Admin — Le Sunset" }, { name: "robots", content: "noindex" }] }),
-  component: () => <PinGate pin="sunset2025" label="Accès Admin"><AdminDashboard /></PinGate>,
+  component: () => <PinGate pin="9999" label="Accès Admin"><AdminDashboard /></PinGate>,
 });
 
 type Tab = "menu" | "events" | "orders" | "qr" | "settings";
@@ -27,7 +27,7 @@ function useStored<T>(key: string, initial: T) {
   const [v, setV] = useState<T>(initial);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    try { const s = localStorage.getItem(key); if (s) setV(JSON.parse(s)); } catch {}
+    try { const s = localStorage.getItem(key); if (s) setV(JSON.parse(s)); } catch { }
   }, [key]);
   useEffect(() => { if (typeof window !== "undefined") localStorage.setItem(key, JSON.stringify(v)); }, [key, v]);
   return [v, setV] as const;

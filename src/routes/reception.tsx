@@ -7,7 +7,7 @@ import { fmtFCFA } from "../lib/constants";
 
 export const Route = createFileRoute("/reception")({
   head: () => ({ meta: [{ title: "Réception — Le Sunset" }, { name: "robots", content: "noindex" }] }),
-  component: () => <PinGate pin="2025" label="Accès Réception"><ReceptionDashboard /></PinGate>,
+  component: () => <PinGate pin="9999" label="Accès Réception"><ReceptionDashboard /></PinGate>,
 });
 
 const STATUS_DOT: Record<OrderStatus, string> = {
@@ -29,7 +29,7 @@ function useChime() {
       o.start(); g.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.02);
       g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4);
       o.stop(ctx.currentTime + 0.45);
-    } catch {}
+    } catch { }
   };
 }
 
