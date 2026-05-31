@@ -1,7 +1,9 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu as MenuIcon, X, Waves } from "lucide-react";
+import { Menu as MenuIcon, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import logoDefault from "../images/logo_sunset.png";
+import logoScrolled from "../images/logo_sunset1.png";
 
 const NAV = [
   { to: "/", label: "Accueil" },
@@ -28,6 +30,7 @@ export function Navbar() {
 
   const isHome = pathname === "/";
   const transparent = isHome && !scrolled;
+  const logoSrc = scrolled ? logoScrolled : logoDefault;
 
   return (
     <>
@@ -38,10 +41,7 @@ export function Navbar() {
       >
         <div className="mx-auto max-w-7xl px-5 lg:px-8 flex h-16 lg:h-18 items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <Waves className={`h-5 w-5 ${transparent ? "text-white" : "text-coral"} transition-colors`} />
-            <span className={`font-accent text-2xl tracking-wide ${transparent ? "text-white" : "text-graphite"}`}>
-              LE SUNSET
-            </span>
+            <img src={logoSrc} alt="Logo Sunset" className="h-14 w-auto object-contain" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">

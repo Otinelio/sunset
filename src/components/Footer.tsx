@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ExternalLink, Share2, Play, MapPin, Clock, Waves } from "lucide-react";
+import { ExternalLink, Share2, Play, MapPin, Clock } from "lucide-react";
 import { BRAND } from "../lib/constants";
+import logoDefault from "../images/logo_sunset.png";
 
 export function Footer() {
   return (
@@ -8,8 +9,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8 py-14 grid gap-10 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2">
-            <Waves className="h-5 w-5 text-amber" />
-            <span className="font-accent text-3xl text-white">LE SUNSET</span>
+            <img src={logoDefault} alt="Logo Sunset" className="h-16 w-auto object-contain" />
           </div>
           <p className="font-accent text-amber text-xl mt-3">{BRAND.tagline}</p>
         </div>
