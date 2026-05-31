@@ -1,0 +1,137 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-coral: var(--coral);
+  --color-amber: var(--amber);
+  --color-teal: var(--teal);
+  --color-sand: var(--sand);
+  --color-offwhite: var(--offwhite);
+  --color-graphite: var(--graphite);
+  --color-terracotta: var(--terracotta-dark);
+  --color-soft-gray: var(--soft-gray);
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-accent: "Cormorant Garamond", serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --coral: #E85C3A;
+  --amber: #F2A65C;
+  --teal: #2E6B7E;
+  --sand: #F8EDE0;
+  --offwhite: #FDF9F5;
+  --graphite: #1C1C1C;
+  --terracotta-dark: #4A2820;
+  --soft-gray: #F2EDE8;
+
+  --background: #FDF9F5;
+  --foreground: #1C1C1C;
+  --card: #FFFFFF;
+  --card-foreground: #1C1C1C;
+  --popover: #FFFFFF;
+  --popover-foreground: #1C1C1C;
+  --primary: #E85C3A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F8EDE0;
+  --secondary-foreground: #1C1C1C;
+  --muted: #F2EDE8;
+  --muted-foreground: #6B6B6B;
+  --accent: #F2A65C;
+  --accent-foreground: #1C1C1C;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8DDD0;
+  --input: #E0D5C8;
+  --ring: #E85C3A;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  .font-accent { font-family: var(--font-accent); font-style: italic; }
+  .font-display { font-family: var(--font-display); }
+  .font-body { font-family: var(--font-body); }
+}
+
+/* Floating particle */
+@keyframes float-up {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+}
+.particle {
+  position: absolute;
+  bottom: -20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(242,166,92,0.9), rgba(232,92,58,0.4) 60%, transparent);
+  filter: blur(1px);
+  animation: float-up linear infinite;
+}
+
+/* Wave animation */
+@keyframes wave-shift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.wave-animate { animation: wave-shift 18s linear infinite; }
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.bounce-down { animation: bounce-down 1.8s ease-in-out infinite; }
+
+/* noise texture */
+.noise-overlay {
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
